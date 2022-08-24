@@ -18,7 +18,7 @@ notesRouter.get('/:id', async (request, response) => {
     }
 })
 
-notesRouter.post('/', async (request, response, next) => {
+notesRouter.post('/', async (request, response) => {
 const body = request.body
 
 const note = new Note({
@@ -31,7 +31,7 @@ const savedNote = await note.save()
 response.status(201).json(savedNote)
 })
 
-notesRouter.delete('/:id', async (request, response, next) => {
+notesRouter.delete('/:id', async (request, response) => {
     await Note.findByIdAndRemove(request.params.id)
     response.status(204).end()
 })
